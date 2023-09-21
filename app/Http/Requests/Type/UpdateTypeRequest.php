@@ -4,6 +4,9 @@ namespace App\Http\Requests\Type;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+//Helpers
+use Illuminate\Support\Facades\Auth;
+
 class UpdateTypeRequest extends FormRequest
 {
     /**
@@ -11,7 +14,7 @@ class UpdateTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +25,8 @@ class UpdateTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' =>'required|max:100',
+           
         ];
     }
 }

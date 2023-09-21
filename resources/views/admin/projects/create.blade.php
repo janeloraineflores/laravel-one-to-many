@@ -28,6 +28,17 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="type_id" class="form-label">Type</label>
+                    <select class="form-select" id="type_id" name="type_id">
+                        <option selected>Select a type</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>
+                                {{ $type->title }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-success w-25">
                         + Add

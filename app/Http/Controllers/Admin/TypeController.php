@@ -40,7 +40,7 @@ class TypeController extends Controller
 
             'title' => $formData['title'],
             'slug' => str()->slug($formData['title']),
-            'content' =>$formData['content'],
+            
         ]);
 
         return redirect()->route('admin.types.show', compact('type'));
@@ -73,7 +73,7 @@ class TypeController extends Controller
 
             'title' => $formData['title'],
             'slug' => str()->slug($formData['title']),
-            'content' =>$formData['content'],
+            
         ]);
 
         return redirect()->route('admin.types.show', compact('type'));

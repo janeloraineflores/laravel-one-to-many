@@ -22,25 +22,15 @@ class TypeSeeder extends Seeder
             Type::truncate();
         });
 
-        $types = [
-            'Frontend',
-            'Backend',
-            'PHP',
-            'HTML',
-            'CSS',
-            'JavaScript',
-            'ChatGPT',
-            'Boolean',
-            'Teacher',
-            'Studenti',
-        ];
-
-        foreach ($types as $title) {
+       
+        for ($i = 0; $i < 10 ; $i++) { 
+            $title = substr(fake()->word(), 0, 255);
             $slug = str()->slug($title);
 
             Type::create([
                 'title' => $title,
-                'slug' => $slug
+                'slug' => $slug,
+                
             ]);
         }
         
