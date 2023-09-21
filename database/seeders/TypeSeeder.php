@@ -5,8 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-//Models
+// Models
 use App\Models\Type;
+
+// Helpers
+use Illuminate\Support\Facades\Schema;
 
 class TypeSeeder extends Seeder
 {
@@ -15,16 +18,32 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        Type::truncate();
+        Schema::withoutForeignKeyConstraints(function () {
+            Type::truncate();
+        });
 
-        for ($i = 0; $i < 10 ; $i++) { 
-            $title = substr(fake()->word(), 0, 255);
-            $slug => str()->slug($title);
-            
+        $types = [
+            'Frontend',
+            'Backend',
+            'PHP',
+            'HTML',
+            'CSS',
+            'JavaScript',
+            'ChatGPT',
+            'Boolean',
+            'Teacher',
+            'Studenti',
+        ];
+
+        foreach ($types as $title) {
+            $slug = str()->slug($title);
+
             Type::create([
-                'title ' => $title,
+                'title' => $title,
                 'slug' => $slug
             ]);
         }
+        
+      
     }
 }
