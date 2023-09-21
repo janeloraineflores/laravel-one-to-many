@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Type;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-//Helpers
-use Illuminate\Support\Facades\Auth;
-
-class UpdateProjectRequest extends FormRequest
+class StoreTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        return false;
     }
 
     /**
@@ -25,8 +22,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' =>'required|max:100',
-            'content' => 'required',
+            //
         ];
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', $project->title)
+@section('page-title', $type->title)
 
 @section('main-content')
 <div class="container">
@@ -8,7 +8,7 @@
     <div class="row py-5">
         <div class="col-12 bg-light">
             <h1>
-                {{ $project->title }}
+                {{ $type->title }}
             </h1>
         </div>
     </div>
@@ -19,7 +19,6 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
-                <th scope="col">Content</th>
                 <th scope="col">Actions</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -27,25 +26,22 @@
         <tbody>
             <tr>
                 <th scope="row">
-                    {{ $project->id }}
+                    {{ $type->id }}
                 </th>
                 <td>
-                    {{ $project->title }}
+                    {{ $type->title }}
                 </td>
                 <td>
-                    {{ $project->slug }}
+                    {{ $type->slug }}
                 </td>
                 <td>
-                    {{ $project->content }}
-                </td>
-                <td>
-                    <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-danger">
+                    <a href="{{ route('admin.types.edit', ['type' => $type->id]) }}" class="btn btn-danger">
                         Update
                     </a>
                 </td>
                 <td>
                     <form
-                        action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}"
+                        action="{{ route('admin.types.destroy', ['type' => $type->id]) }}"
                         method="POST"
                         onsubmit="return confirm('Are you sure you want to delete this item?');">
                         @csrf

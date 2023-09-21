@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Project\StoreProjectRequest;
-use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Http\Requests\Type\StoreTypeRequest;
+use App\Http\Requests\Type\UpdateTypeRequest;
 use App\Http\Controllers\Controller;
 
 //Models
-use App\Models\Project;
+use App\Models\Type;
 
-class ProjectController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {   
-        $projects = Project::all();
+    {
+        $types = Type::all();
 
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -26,67 +26,67 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        return view('admin.types.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request)
+    public function store(StoreTypeRequest $request)
     {
         $formData = $request->validated();
 
-        $project = Project::create([
+        $type = Type::create([
 
             'title' => $formData['title'],
             'slug' => str()->slug($formData['title']),
             'content' =>$formData['content'],
         ]);
 
-        return redirect()->route('admin.projects.show', compact('project'));
+        return redirect()->route('admin.types.show', compact('type'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(Type $type)
     {
-        return view('admin.projects.show', compact('project'));
+        return view('admin.types.show', compact('types'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Type $type)
     {
-        return view('admin.projects.edit', compact('project'));
+        return view('admin.types.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
         $formData = $request->validated();
 
-        $project->update([
+        $type->update([
 
             'title' => $formData['title'],
             'slug' => str()->slug($formData['title']),
             'content' =>$formData['content'],
         ]);
 
-        return redirect()->route('admin.projects.show', compact('project'));
+        return redirect()->route('admin.types.show', compact('type'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project)
+    public function destroy(Type $type)
     {
+        
+        $type->delete();
 
-        $project->delete();
-
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.types.index');
     }
 }

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('page-title', 'All Projects')
+@section('page-title', 'All Types')
 
 @section('main-content')
     <div class="row">
         <div class="col">
 
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-success w-100 mb-5 ">
+            <a href="{{ route('admin.types.create') }}" class="btn btn-success w-100 mb-5 ">
                 + Add
             </a>
 
@@ -15,37 +15,37 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Content</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Actions</th>
                         <th scope="col">Actions</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($projects as $project)
+                    @foreach ($types as $type)
                         <tr>
                             <th scope="row">
-                                {{ $project->id }}
+                                {{ $type->id }}
                             </th>
                             <td>
-                                {{ $project->title }}
+                                {{ $type->title }}
                             </td>
                             <td>
-                                {{ $project->content }}
+                                {{ $type->Slug }}
                             </td>
                             <td>
-                                <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}" class="btn btn-primary">
+                                <a href="{{ route('admin.types.show', ['type' => $type->id]) }}" class="btn btn-primary">
                                     See
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-danger">
+                                <a href="{{ route('admin.types.edit', ['type' => $type->id]) }}" class="btn btn-danger">
                                     Update
                                 </a>
                             </td>
                             <td>
                                 <form
-                                    action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}"
+                                    action="{{ route('admin.types.destroy', ['type' => $type->id]) }}"
                                     method="POST"
                                     onsubmit="return confirm('Are you sure you want to delete this item?');">
                                     @csrf
