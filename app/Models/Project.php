@@ -15,4 +15,10 @@ class Project extends Model
         'content',
         'type_id'
     ];
+
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    } 
 }

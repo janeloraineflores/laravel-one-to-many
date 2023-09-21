@@ -13,13 +13,14 @@
         </div>
     </div>
 
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Content</th>
+                <th scope="col">Type</th>
                 <th scope="col">Actions</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -37,6 +38,16 @@
                 </td>
                 <td>
                     {{ $project->content }}
+                </td>
+                <td>
+                    @if ($project->type)
+                        <a href="{{ route('admin.types.show', ['type' => $project->type->id]) }}">
+                            {{ $project->type->title }}
+                        </a>
+                    @else
+                        -
+                    @endif
+                    
                 </td>
                 <td>
                     <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-danger">

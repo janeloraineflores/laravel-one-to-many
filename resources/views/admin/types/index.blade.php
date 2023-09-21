@@ -10,7 +10,7 @@
                 + Add
             </a>
 
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -31,7 +31,7 @@
                                 {{ $type->title }}
                             </td>
                             <td>
-                                {{ $type->Slug }}
+                                {{ $type->slug }}
                             </td>
                             <td>
                                 <a href="{{ route('admin.types.show', ['type' => $type->id]) }}" class="btn btn-primary">

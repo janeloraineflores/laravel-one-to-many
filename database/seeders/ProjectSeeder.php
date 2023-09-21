@@ -23,7 +23,7 @@ class ProjectSeeder extends Seeder
             $slug = str()->slug($title);
             $content = fake()->paragraph();
 
-            $randomCategoryId = null;
+            $randomTypeId = null;
             if (fake()->boolean()) {
                 $randomTypeId = Type::inRandomOrder()->first()->id;
             }
@@ -32,7 +32,7 @@ class ProjectSeeder extends Seeder
                 'title' => $title,
                 'slug' => $slug,
                 'content' => $content,
-                'category_id' => $randomTypeId
+                'type_id' => $randomTypeId
             ]);
         }
     }

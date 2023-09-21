@@ -19,15 +19,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Write here..." value="{{ old('slug') }}" required>
-                    @error('slug')
-                        <div class="alert alert-danger my-2">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
+            
                 <div class="text-center">
                     <button type="submit" class="btn btn-success w-25">
                         + Add
